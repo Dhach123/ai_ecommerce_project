@@ -217,6 +217,7 @@ venv.bak/
 # PyCharm
 .idea/
 
+
 # Logs and temp files
 *.log
 *.csv
