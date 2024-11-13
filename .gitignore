@@ -126,6 +126,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+myenv/
 ENV/
 env.bak/
 venv.bak/
@@ -164,100 +165,3 @@ cython_debug/
 artifacts/
 
 
-from pathlib import Path
-
-# Define the .gitignore content
-gitignore_content = """
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Virtual environments
-venv/
-.venv/
-env/
-.env/
-ENV/
-env.bak/
-venv.bak/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# Visual Studio Code files
-.vscode/
-.vscode/*
-
-# PyCharm
-.idea/
-
-
-# Logs and temp files
-*.log
-*.csv
-*.data
-*.dat
-*.tmp
-*.pkl
-
-# Model weights and large files
-models/
-*.h5
-*.ckpt
-*.pt
-*.onnx
-
-# Data files
-data/
-*.db
-*.sqlite
-*.json
-*.hdf5
-
-# Docker files
-docker-compose.yml
-Dockerfile
-
-# Configuration files and sensitive data
-config/config.yaml
-params.yaml
-schema.yaml
-
-# Environment variables
-.env
-
-# System files
-.DS_Store
-Thumbs.db
-"""
-
-# Create the .gitignore file with the specified content
-gitignore_path = Path(".gitignore")
-with gitignore_path.open("w") as f:
-    f.write(gitignore_content)
