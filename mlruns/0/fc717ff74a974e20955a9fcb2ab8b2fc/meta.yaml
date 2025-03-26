@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/ai_ecommerce_project/ecommerce_project/mlruns/0/fc717ff74a974e20955a9fcb2ab8b2fc/artifacts
+end_time: 1734085324310
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fc717ff74a974e20955a9fcb2ab8b2fc
+run_name: ./models/negotiation_model/results
+run_uuid: fc717ff74a974e20955a9fcb2ab8b2fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734085201236
+status: 3
+tags: []
+user_id: chopd

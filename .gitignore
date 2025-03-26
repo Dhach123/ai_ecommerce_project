@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+env/
+
+# VSCode settings
+.vscode/
+
+# Environment variables
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node modules (if applicable)
+node_modules/
+
+# Compiled files
+*.exe
+*.out
+*.o
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+# Ignore saved models folder
+
+# Ignore model files
+*.h5
+*.pth
+*.pt
+*.pkl
+*.sav
+*.json
+
+newtrained_model/
+saved_bert_model/
+logs/
+results/
+
