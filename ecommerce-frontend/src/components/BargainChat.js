@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import { db } from "./firebaseConfig"; // Import Firestore config
+import { collection, addDoc, serverTimestamp, onSnapshot } from "firebase/firestore";
 
 const BargainChat = () => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Real-time listener for Firestore chat history
+    const unsubscribe = onSnapshot(collection(db, "customer_chats"), (snapshot) => {
+      const chats = snapshot.docs.map(doc => doc.data());
+      setChatHistory(chats);
+    });
+
+    return () => unsubscribe(); // Cleanup listener on unmount
+  }, []);
 
   const sendMessage = async () => {
     if (!message.trim()) {
@@ -16,13 +28,29 @@ const BargainChat = () => {
 
     setLoading(true);
     try {
+      // Save user message to Firestore
+      await addDoc(collection(db, "customer_chats"), {
+        user: "Customer",
+        message,
+        timestamp: serverTimestamp(),
+      });
+
+      // Send message to chatbot API
       const res = await axios.get(`http://localhost:8000/chat?message=${message}`);
-      setChatHistory([...chatHistory, { user: message, bot: res.data.response }]);
+
+      // Save bot response to Firestore
+      await addDoc(collection(db, "customer_chats"), {
+        user: "Salesperson",
+        message: res.data.response,
+        timestamp: serverTimestamp(),
+      });
+
       toast.success("Response received! ✅");
     } catch (err) {
       console.error('Error:', err);
-      toast.error("Failed to fetch chatbot response. ❌");
+      toast.error("Failed to send message. ❌");
     }
+
     setMessage('');
     setLoading(false);
   };
@@ -33,8 +61,7 @@ const BargainChat = () => {
       <div className="chat-box border rounded p-2 mb-3" style={{ height: '300px', overflowY: 'auto' }}>
         {chatHistory.map((chat, index) => (
           <div key={index}>
-            <p><strong>You:</strong> {chat.user}</p>
-            <p><strong>Salesperson:</strong> {chat.bot}</p>
+            <p><strong>{chat.user}:</strong> {chat.message}</p>
             <hr />
           </div>
         ))}
