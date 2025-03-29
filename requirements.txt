@@ -10,5 +10,6 @@ transformers
 torch
 huggingface_hub
 tensorflow
+gunicorn
 
 # Add other dependencies here
