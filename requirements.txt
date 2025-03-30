@@ -11,7 +11,8 @@ torch
 huggingface_hub
 tensorflow
 gunicorn
-Werkzeug
+werkzeug==2.0.3
+
 
 
 
