@@ -104,6 +104,8 @@ def recommend():
 
     return jsonify(top_recommendations[['item_id', 'main_category', 'product_name']].to_dict(orient="records"))
 
-# ✅ **RUN FLASK SERVER (Port 8000)**
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+# ✅ **RUN FLASK SERVER (Port 10000)**
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)

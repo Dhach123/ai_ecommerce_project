@@ -12,6 +12,9 @@ huggingface_hub
 tensorflow
 gunicorn
 Werkzeug==2.2.2
+# requirements.txt
+scikit-learn
+
 
 
 
