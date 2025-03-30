@@ -11,5 +11,6 @@ torch
 huggingface_hub
 tensorflow
 gunicorn
+werkzeug==2.0.3
 
 # Add other dependencies here
